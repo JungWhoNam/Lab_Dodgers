@@ -8,7 +8,7 @@ public class HelloCode : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("스타트");        
+        Debug.Log("스타트");
     }
 
     void Update()
@@ -18,10 +18,25 @@ public class HelloCode : MonoBehaviour
             Rigidbody rb = GetComponent<Rigidbody>();
             rb.velocity = new Vector3(0, speed, 0);
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
             Rigidbody rb = GetComponent<Rigidbody>();
             rb.velocity = new Vector3(-speed, 0, 0);
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            Rigidbody rb = GetComponent<Rigidbody>();
+            rb.velocity = new Vector3(speed, 0, 0);
+        }
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            Rigidbody rb = GetComponent<Rigidbody>();
+            rb.velocity = new Vector3(0, 0, speed);
+        }
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            Rigidbody rb = GetComponent<Rigidbody>();
+            rb.velocity = new Vector3(0, 0, -speed);
         }
 
     }
