@@ -30,7 +30,11 @@ public class HelloCode : MonoBehaviour
             float xSpeed = xInput * speed;
             float zSpeed = zInput * speed;
 
-            rb.velocity = new Vector3(xSpeed, 0, zSpeed);
+            //rb.velocity = new Vector3(xSpeed, 0, zSpeed);
+            //rb.AddForce(new Vector3(xSpeed, 0, zSpeed), ForceMode.Impulse);
+            Vector3 velocity = new Vector3(xSpeed, 0, zSpeed);
+            Vector3 pos = rb.position + velocity;
+            rb.MovePosition(pos);
         }      
     }
 }
