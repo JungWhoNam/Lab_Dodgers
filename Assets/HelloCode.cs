@@ -37,4 +37,13 @@ public class HelloCode : MonoBehaviour
             rb.MovePosition(pos);
         }      
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name.Equals("Plane"))
+        {
+            Debug.Log("On Ground");
+        }
+    }
+
 }
