@@ -5,39 +5,22 @@ using UnityEngine;
 public class HelloCode : MonoBehaviour
 {
     public float speed = 10;
+    private Rigidbody rb;
 
     void Start()
     {
         Debug.Log("½ºÅ¸Æ®");
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Rigidbody rb = GetComponent<Rigidbody>();
-            rb.velocity = new Vector3(0, speed, 0);
-        }
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            Rigidbody rb = GetComponent<Rigidbody>();
-            rb.velocity = new Vector3(-speed, 0, 0);
-        }
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            Rigidbody rb = GetComponent<Rigidbody>();
-            rb.velocity = new Vector3(speed, 0, 0);
-        }
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            Rigidbody rb = GetComponent<Rigidbody>();
-            rb.velocity = new Vector3(0, 0, speed);
-        }
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            Rigidbody rb = GetComponent<Rigidbody>();
-            rb.velocity = new Vector3(0, 0, -speed);
-        }
+        float xInput = Input.GetAxis("Horizontal");
+        float zInput = Input.GetAxis("Vertical");
 
+        float xSpeed = xInput * speed;
+        float zSpeed = zInput * speed;
+
+        rb.velocity = new Vector3(xSpeed, 0, zSpeed);
     }
 }
