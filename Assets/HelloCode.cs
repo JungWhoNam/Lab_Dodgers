@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class HelloCode : MonoBehaviour
 {
-    public float jumpForce = 6;
-    public float speed = 10;
-    private Rigidbody rb;
+    public float jumpForce = 12;
+    public float speed = 0.5f;
 
+    private Rigidbody rb;
+    private bool isJumping = false;
+    
     void Start()
     {
         Debug.Log("½ºÅ¸Æ®");
@@ -16,10 +18,12 @@ public class HelloCode : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (!isJumping && Input.GetKeyDown(KeyCode.Space))
         {
             Vector3 force = new Vector3(0, jumpForce, 0);
             rb.AddForce(force, ForceMode.Impulse);
+
+            isJumping = true;
         }
 
         float xInput = Input.GetAxis("Horizontal");
@@ -43,6 +47,7 @@ public class HelloCode : MonoBehaviour
         if (collision.gameObject.name.Equals("Plane"))
         {
             Debug.Log("On Ground");
+            isJumping = false;
         }
     }
 
