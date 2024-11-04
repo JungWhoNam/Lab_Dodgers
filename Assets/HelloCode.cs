@@ -8,7 +8,7 @@ public class HelloCode : MonoBehaviour
     public float speed = 0.5f;
 
     private Rigidbody rb;
-    private bool isJumping = false;
+    private int jumpCount = 0;
     
     void Start()
     {
@@ -18,12 +18,12 @@ public class HelloCode : MonoBehaviour
 
     void Update()
     {
-        if (!isJumping && Input.GetKeyDown(KeyCode.Space))
+        if (jumpCount < 2 && Input.GetKeyDown(KeyCode.Space))
         {
             Vector3 force = new Vector3(0, jumpForce, 0);
             rb.AddForce(force, ForceMode.Impulse);
 
-            isJumping = true;
+            jumpCount = jumpCount + 1;
         }
 
         float xInput = Input.GetAxis("Horizontal");
@@ -47,7 +47,7 @@ public class HelloCode : MonoBehaviour
         if (collision.gameObject.name.Equals("Plane"))
         {
             Debug.Log("On Ground");
-            isJumping = false;
+            jumpCount = 0;
         }
     }
 
