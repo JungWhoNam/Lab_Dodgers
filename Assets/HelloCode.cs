@@ -45,7 +45,8 @@ public class HelloCode : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name.Equals("Plane"))
+        // if (collision.gameObject.name.Equals("Plane"))
+        if (collision.gameObject.CompareTag("Ground"))
         {
             Debug.Log("On Ground");
             jumpCount = 0;
