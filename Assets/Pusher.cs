@@ -15,9 +15,9 @@ public class Pusher : MonoBehaviour
         // 부딪친 부분의 법선벡터 (그림 참조)
         Vector3 normalVector = collision.GetContact(0).normal;      
 
-        if (collision.gameObject.name.Equals("Capsule"))
+        if (name.Equals("Capsule") && rb != null)
         {
-            collision.rigidbody.AddForce(-normalVector * pushForce, ForceMode.Impulse);
+            rb.AddForce(-normalVector * pushForce, ForceMode.Impulse);
         }
     }
 }
