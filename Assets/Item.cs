@@ -21,6 +21,11 @@ public class Item : MonoBehaviour
 
         if (other.gameObject.CompareTag("Player"))
         {
+            HelloCode player = other.gameObject.GetComponent<HelloCode>();
+            if (player != null)
+            {
+                player.maxJumps += 1;
+            }
             gameObject.SetActive(false);
         }
     }
