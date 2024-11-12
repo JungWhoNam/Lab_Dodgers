@@ -19,7 +19,7 @@ public class Item : MonoBehaviour
 
         Debug.Log("ºÎµúÄ§: " + name + " " + tag);
 
-        if (name.Equals("Capsule"))
+        if (other.gameObject.CompareTag("Player"))
         {
             gameObject.SetActive(false);
         }
