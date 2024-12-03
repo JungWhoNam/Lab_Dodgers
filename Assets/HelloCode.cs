@@ -8,6 +8,8 @@ public class HelloCode : MonoBehaviour
     public float speed = 0.5f;
     public int maxJumps = 2;
 
+    public ParticleSystem ps;
+
     private Rigidbody rb;
     private int jumpCount = 0;
     
@@ -50,6 +52,9 @@ public class HelloCode : MonoBehaviour
         {
             Debug.Log("On Ground");
             jumpCount = 0;
+
+            ps.transform.position = collision.GetContact(0).point;
+            ps.Play();
         }
     }
 
