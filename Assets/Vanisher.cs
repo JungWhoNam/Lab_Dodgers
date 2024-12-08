@@ -18,14 +18,16 @@ public class Vanisher : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            // Color c = new Color(1, 0, 0, 1); // 빨간색
-            // Color c = new Color(0, 1, 0, 1); // 녹색
-            // Color c = new Color(0, 0, 1, 1); // 파란색
-            // Color c = new Color(0, 0, 1, 0.5f); // 반투명한 파란색 
-            Color c = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+            jumpCount += 1;
+            
+            Color c = new Color(1, 1, 1, 1);
+
+            c.a = (float) (maxJumps - jumpCount) / maxJumps;
+
             material.color = c;
 
-            jumpCount += 1;
+            Debug.Log("Max Jumps: " + maxJumps + ", Jump Count: " + jumpCount + ", Alpha: " + c.a);
+
             if (jumpCount >= maxJumps)
             {
                 gameObject.SetActive(false);

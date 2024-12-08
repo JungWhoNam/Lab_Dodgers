@@ -37,6 +37,12 @@ public class HelloCode : MonoBehaviour
             float xSpeed = xInput * speed;
             float zSpeed = zInput * speed;
 
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                xSpeed *= 2f;
+                zSpeed *= 2f;
+            }
+
             //rb.velocity = new Vector3(xSpeed, 0, zSpeed);
             //rb.AddForce(new Vector3(xSpeed, 0, zSpeed), ForceMode.Impulse);
             Vector3 velocity = new Vector3(xSpeed, 0, zSpeed);
@@ -50,7 +56,7 @@ public class HelloCode : MonoBehaviour
         // if (collision.gameObject.name.Equals("Plane"))
         if (collision.gameObject.CompareTag("Ground"))
         {
-            Debug.Log("On Ground");
+            //Debug.Log("On Ground");
             jumpCount = 0;
 
             ps.transform.position = collision.GetContact(0).point;
